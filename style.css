@@ -25,12 +25,6 @@ li {
     background-color: cadetblue;
 }
 
-#forcast {
-    background-color: rgb(124, 94, 58);
-    width: 100px;
-    height: 50px;
-}
-
 .list-group {
     margin-top: 10px;
 }
@@ -44,5 +38,47 @@ li {
 
 #main-content {
     margin:0 20px 0 20px;
-    background-color: rgb(148, 148, 160);
+    background-color: cadetblue;
+}
+
+.cityNameContainer {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.uvContainer {
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.uvLevelLow {
+    margin-left: 3px;
+    background-color: greenyellow;
+}
+
+.uvLevelModerate {
+    margin-left: 3px;
+    background-color: orange;
+}
+
+.uvLevelHigh {
+    margin-left: 3px;
+    background-color: red;
+}
+
+#forcast {
+    display: flex;
+}
+
+.forcastDay {
+    font-weight: bold;
+}
+
+.forcastBox {
+    margin: 0 10px 0 10px;
+    padding: 5px;
+    border-radius: 5%;
+    background-color: aquamarine;
 }
