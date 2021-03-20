@@ -16,9 +16,9 @@ let forcastDisplay = $("#forcast");
 let searchResult = [];
 
 let apiKey = "&appid=b0cf6c6bc6f91698b7db2846b91237aa";
-let endPoint = "http://api.openweathermap.org/data/2.5/weather?q=";
-let uvEndPoint = "http://api.openweathermap.org/data/2.5/uvi?lat=";
-let forcastEndPoint = "http://api.openweathermap.org/data/2.5/forecast?q="
+let endPoint = "https://api.openweathermap.org/data/2.5/weather?q=";
+let uvEndPoint = "https://api.openweathermap.org/data/2.5/uvi?lat=";
+let forcastEndPoint = "https://api.openweathermap.org/data/2.5/forecast?q="
 
 function renderList () {
     for (var i = 0; i < searchResult.length; i++){
@@ -46,7 +46,7 @@ function storeResult() {
 
 function searchCity(city) {
     let searchOutput = city ? city : search.val();
-    let icon = "http://openweathermap.org/img/w/";
+    let icon = "https://openweathermap.org/img/w/";
     let current = moment().format("MMM-Do-YYYY");
     
     fetch(endPoint + searchOutput + apiKey)
