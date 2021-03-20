@@ -1,7 +1,7 @@
 let listGroup = $(".list-group");
 let search = $("#search-input");
 let initSearch = $("#init-search");
-let searchUl = $("ul");
+let searchUl = $(".searchUl");
 let cityDisplay = $("#cityDisplay");
 let cityName =  $("<h2></h2>");
 let temp = $("<h3></h3>");
@@ -27,18 +27,25 @@ function renderList () {
     let searchLi = $("<li></li>");
         searchLi.text(onList);
         searchUl.append(searchLi);
+        // listGroup.append(searchUl)
         searchLi.attr("data-index", i);
     console.log(localStorage);
     console.log(searchLi);
 }
 
+searchUl.on('click', "li", function(event) {
+    const city = event.target.textContent; // dallas, dayton
+    searchCity(city)
+
+
+})
+
 function storeResult() {
     localStorage.setItem("result", JSON.stringify(searchResult))
 }
 
-initSearch.on("click", function (event) {
-    event.preventDefault();
-    let searchOutput = search.val();
+function searchCity(city) {
+    let searchOutput = city ? city : search.val();
     let icon = "http://openweathermap.org/img/w/";
     let current = moment().format("MMM-Do-YYYY");
     
@@ -136,5 +143,11 @@ initSearch.on("click", function (event) {
     searchResult.push(searchOutput);
 
     storeResult();
-    renderList();
+
+    if (!city) renderList();
+}
+
+initSearch.on("click", function (event) {
+    event.preventDefault();
+    searchCity();
 });

@@ -3,4 +3,4 @@ This is a weather dashboard that shows the current weather status. By entering t
 
 This website is design for the user who wants to know how the weather is for the current day and the future. It's also helpful for those who wish to know all the weather status of the cities around the United States.
 
-![Main page](./assets/screenshot)
+![Main page](./assets/screenshot.PNG)
