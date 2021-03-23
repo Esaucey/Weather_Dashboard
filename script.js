@@ -19,6 +19,16 @@ let apiKey = "&appid=b0cf6c6bc6f91698b7db2846b91237aa";
 let endPoint = "https://api.openweathermap.org/data/2.5/weather?q=";
 let uvEndPoint = "https://api.openweathermap.org/data/2.5/uvi?lat=";
 let forcastEndPoint = "https://api.openweathermap.org/data/2.5/forecast?q="
+console.log(localStorage);
+
+function history() {
+    let history = JSON.parse(localStorage.getItem("result"));
+    for (var i = 0; i < history.length; i++){
+        let searchLi = $("<li></li>");
+        searchLi.text(history[i]);
+        searchUl.append(searchLi);
+    }
+}
 
 function renderList () {
     for (var i = 0; i < searchResult.length; i++){
@@ -27,17 +37,13 @@ function renderList () {
     let searchLi = $("<li></li>");
         searchLi.text(onList);
         searchUl.append(searchLi);
-        // listGroup.append(searchUl)
         searchLi.attr("data-index", i);
     console.log(localStorage);
-    console.log(searchLi);
 }
 
 searchUl.on('click', "li", function(event) {
-    const city = event.target.textContent; // dallas, dayton
-    searchCity(city)
-
-
+    const city = event.target.textContent;
+    searchCity(city);
 })
 
 function storeResult() {
@@ -67,7 +73,6 @@ function searchCity(city) {
         humidityDisplay.text("Humidity: " + data.main.humidity + "%");
         windSpeedDisplay.text("Wind Speed: " + data.wind.speed + " MPH");
         
-        console.log(temp);
         cityDisplay.append(cityNameContainer);
         cityNameContainer.append(cityName);
         cityNameContainer.append(img);
@@ -95,7 +100,6 @@ function searchCity(city) {
             cityDisplay.append(uvContainer);
             uvContainer.append(uv);
             uvContainer.append(uvVal);
-            console.log(uvVal);
         })
     })
 
@@ -132,9 +136,7 @@ function searchCity(city) {
             forcastBox.append(forcastHumidityDisplay);
 
             count = count + 9;
-            console.log(data.list[count]);
         }
-        console.log(data);
     })
 
     if (searchOutput === "") {
@@ -151,3 +153,5 @@ initSearch.on("click", function (event) {
     event.preventDefault();
     searchCity();
 });
+
+history();
