@@ -28,6 +28,11 @@ function history() {
         searchLi.text(history[i]);
         searchUl.append(searchLi);
     }
+    let clearBtn = $("<button>");
+    listGroup.append(clearBtn);
+    clearBtn.text("Clear").on('click', function() {
+        searchUl.text("");
+    })
 }
 
 function renderList () {
@@ -58,10 +63,12 @@ function searchCity(city) {
     fetch(endPoint + searchOutput + apiKey)
     .then(response => response.json())
     .then(data => {
+  
         var cityNameContainer = $("<div></div>").addClass("cityNameContainer");
         let iconCode = data.weather[0].icon;
         let iconUrl = icon + iconCode + ".png";
         //display the value
+        
         img.attr('src', iconUrl);
         cityName.text(data.name + " (" + current + ") ");
 
@@ -88,11 +95,11 @@ function searchCity(city) {
             
             uvLevel = data.value;
             if (uvLevel < 3) {
-                uvVal.addClass("uvLevelLow");
+                uvVal.attr("class", "uvLevelLow");
             } else if (uvLevel >= 3 && uvLevel < 8) {
-                uvVal.addClass("uvLevelModerate");
+                uvVal.attr("class", "uvLevelModerate");
             } else {
-                uvVal.addClass("uvLevelHigh");
+                uvVal.attr("class", "uvLevelHigh");
             }
             uv.text("UV Index: ");
             uvVal.text(uvLevel);
